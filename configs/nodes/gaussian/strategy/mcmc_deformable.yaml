@@ -1,0 +1,8 @@
+# MCMC strategy tuned for the deformable objects node.
+#
+# Deformable objects are few and small next to the background, so they run on a
+# far smaller particle budget.
+_import_: ./mcmc.yaml
+strategy_cfg:
+  config:
+    max_num_particles: 300000

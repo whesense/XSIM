@@ -1,0 +1,12 @@
+# Learned environment-map background (nvdiffrast cubemap), blended into each
+# camera render where alpha < 1 (sky/background). Runs late in the outer
+# NodeCollection -- after the render node (and after the CNN postprocessor, when
+# present), since it blends 3-channel RGB.
+_fn_: xsim.modeling.nodes.postprocess.env_light_node.EnvLightNode.create
+resolution: 1024
+max_resolution: 1024
+increase_resolution_steps: 3000
+opt_cfg:
+  params:
+    env:
+      lr: 0.01

@@ -1,0 +1,3 @@
+# GSplatRenderNode. Losses live on a dedicated loss node
+# (nodes/losses/*.yaml), not here.
+_fn_: xsim.modeling.nodes.render.GSplatRenderNode.create

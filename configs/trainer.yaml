@@ -1,0 +1,28 @@
+
+trainer:
+  output_dir: outputs
+  device: cuda
+  max_steps: 40000
+  checkpoint_interval: 10000
+  visualization_interval: 2000
+  snapshot: true
+  # metrics per sensor kind; lidar has no metrics yet (empty -> lidar loop skipped)
+  eval:
+    enabled: true
+    image_metrics:
+      - _cls_: xsim.metrics.PSNR
+      - _cls_: xsim.metrics.SSIM
+      - _cls_: xsim.metrics.LPIPS
+    lidar_metrics:
+      - _cls_: xsim.metrics.ChamferDist
+  # sample indices rendered each visualization; auto-picked from the test
+  # split when omitted (num_vis_samples evenly spaced frames).
+  num_vis_samples: 3
+  # vis_samples: [0, 40, 80]
+#  profile:
+#      wait: 500      # skip this many steps (warmup: allocator + densification settle)
+#      warmup: 5      # profiler primes for these
+#      active: 10     # steps actually captured
+#      with_stack: true      # source-line attribution (set false if too heavy)
+#      record_shapes: false
+#      profile_memory: false

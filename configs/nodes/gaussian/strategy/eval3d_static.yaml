@@ -1,0 +1,9 @@
+# Eval3D strategy tuned for the static background node.
+_import_: ./eval3d.yaml
+strategy_cfg:
+  config:
+    densify_end_iter: 20000
+    densify_grad_thr: 0.001
+    densify_scale2d_stop_iter: 5000
+    density_reset_end_iter: 20000
+    prune_scale3d: 0.5

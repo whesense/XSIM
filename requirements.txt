@@ -1,0 +1,28 @@
+pandas
+pyarrow
+matplotlib
+# unpickling the original SMPL model in tools/convert_smpl_model.py
+scipy
+
+# metrics evaluation / loss functions
+torchmetrics[image]
+pytorch-msssim
+
+# for segmentation masks
+transformers
+huggingface-hub
+
+# logging/configs
+dacite
+rich
+# custom config system
+jetcon@git+https://github.com/npatakin/jetcon
+# fast PLY read/write directly from/to pytorch tensors, with custom attributes support
+plytorch@git+https://github.com/npatakin/plytorch
+
+# cuda extensions
+nvdiffrast@git+https://github.com/NVlabs/nvdiffrast
+chamferdist
+
+# data loading
+pypcd4

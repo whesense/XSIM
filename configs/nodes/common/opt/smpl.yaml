@@ -1,0 +1,21 @@
+# Optimizer schedule for the SMPL humans node.
+params:
+  positions:
+    _fn_: xsim.modeling.nodes.sched_cfg
+    lr_init: 4.8e-4
+    lr_final: 4.8e-6
+  rotation:
+    lr: 0.005
+  scale:
+    lr: 0.005
+  density:
+    lr: 0.05
+  features_albedo:
+    lr: 0.005
+  features_specular:
+    lr: 2.5e-4
+  w_dc_vox:
+    _fn_: xsim.modeling.nodes.sched_cfg
+    lr_init: 1.0e-4
+    lr_final: 1.0e-5
+    opt_start_iter: 10000

@@ -1,0 +1,6 @@
+# Regularization mixin: OutOfBoundLoss, penalising particles that leave their
+# object box. For the rigid and deformable nodes
+
+losses:
+  - - _cls_: xsim.modeling.losses.OutOfBoundLoss
+    - 10.0

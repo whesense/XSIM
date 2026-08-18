@@ -1,0 +1,11 @@
+# Base loss node: photometric (color) render losses on a default SceneNode.
+# Depth-specific loss configs import this and append their depth term
+# (image_depth.yaml / lidar_depth.yaml) -- list-valued `losses` concatenate on
+# import, so the imported color losses are kept and the depth loss is added.
+
+_fn_: xsim.modeling.nodes.SceneNode.create
+losses:
+  - - _cls_: xsim.modeling.losses.L1ImageLoss
+    - 0.8
+  - - _cls_: xsim.modeling.losses.SSIMImageLoss
+    - 0.2

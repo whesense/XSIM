@@ -1,0 +1,27 @@
+# container_raw.yaml variant with the SkyLogit mixin on every gaussian node:
+# each particle carries a per-particle sky probability (sigmoid-activated).
+_fn_: xsim.modeling.nodes.gaussian.GaussianContainer.create
+nodes:
+  - _import_:
+      - ./static.yaml
+      - ./features/raw.yaml
+      - ./mixins/sky_logit.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_static.yaml
+  - _import_:
+      - ./rigid.yaml
+      - ./features/raw.yaml
+      - ./mixins/sky_logit.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_rigid.yaml
+  - _import_:
+      - ./deformable.yaml
+      - ./features/raw.yaml
+      - ./mixins/sky_logit.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_deformable.yaml
+  # the mixin goes on the smpl node too: every renderable must carry the same
+  # fields, container assembly (ActivatedGaussians.cat) errors otherwise
+  - _import_:
+      - ./smpl_raw.yaml
+      - ./mixins/sky_logit.yaml

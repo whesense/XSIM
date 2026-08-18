@@ -1,0 +1,7 @@
+# Regularization mixin: ties the lidar density to the optical one.
+# Only meaningful on a node composed with mixins/lidar_density.yaml -- the loss
+# reads gs.lidar_density and a model without the mixin has none.
+
+losses:
+  - - _cls_: xsim.modeling.losses.LidarDensityRegLoss
+    - 0.1

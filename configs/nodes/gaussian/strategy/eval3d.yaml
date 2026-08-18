@@ -1,0 +1,11 @@
+# Strategy aspect: Eval3D densification. Shared defaults; per-node configs
+# (eval3d_static / eval3d_rigid / eval3d_deformable) extend this.
+strategy_type:
+  _type_: xsim.modeling.gaussian.Eval3DStrategy
+strategy_cfg:
+  scene_extent: scene_radius
+  verbose: true
+  config:
+    densify_size_thr: 0.002
+    density_reset_freq: 4000
+    pause_refine_after_reset: 1000

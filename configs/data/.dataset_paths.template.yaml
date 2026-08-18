@@ -1,0 +1,18 @@
+# Machine-local dataset locations, as a flat "VARIABLE: path" mapping.
+#
+# This file is gitignored, so a pull never rewrites it and every machine keeps
+# its own copy. The tracked provider configs reference these through jetcon's
+# "${env:NAME}" resolver and stay identical everywhere.
+#
+# xsim.utils.update_env() exports each entry that is not already set, so an
+# exported variable always wins:
+#
+#   WAYMO_ROOT_PATH=/other/waymo python tools/train.py configs/waymo.yaml
+#
+# A variable that is neither here nor in the environment fails when the config
+# is read, naming both the variable and the config key that wanted it.
+
+WAYMO_ROOT_PATH: <base_path>/v2/training
+# will be created on the first run
+WAYMO_CACHE_PATH: <waymo_cache_path>/training
+WAYMO_SMPL_DATA_PATH: "<waymo_poses_path>/{:03d}/humanpose/smpl.pkl"

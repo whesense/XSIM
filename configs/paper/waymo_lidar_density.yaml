@@ -1,0 +1,31 @@
+# Paper experiment: per-particle lidar density on every gaussian node -- the
+# lidar render uses a second, lidar-specific density fitted against the lidar
+# returns instead of the optical one, tied to it by LidarDensityRegLoss (0.1,
+# the default in regularization/lidar_density.yaml).
+provider:
+  _import_: ../data/waymo/provider.yaml
+
+dataset:
+  _import_: ../data/waymo/dataset.yaml
+  batch:
+    max_lidars_per_batch: 1
+
+
+split:
+  _import_: ../data/waymo/split.yaml
+
+init:
+  _import_: ../data/init.yaml
+
+nodes:
+  _fn_: xsim.modeling.nodes.NodeCollection.create
+  nodes:
+    - _import_: ../nodes/kinematics/trajectory.yaml
+    - _import_: ../nodes/gaussian/container_raw_lidar_density.yaml
+    - _import_: ../nodes/render/xsimgs.yaml
+    - _import_: ../nodes/postprocess/cnn.yaml
+    - _import_: ../nodes/postprocess/env_light.yaml
+    - _import_: ../nodes/postprocess/pointcloud.yaml
+    - _import_: ../nodes/losses/lidar_depth.yaml
+
+_import_: ../trainer.yaml

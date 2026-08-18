@@ -1,0 +1,19 @@
+# prepare_initialization configuration.
+# Builds a SceneProcessingConfig instance: prepare_initialization(sim_ds, cfg.init)
+_data_: xsim.data.reconstruction.init.init_config.SceneProcessingConfig
+limit_points_to_roi: false
+use_invisible_points: true
+color_by_k_neighbour: 3
+voxel_count_filter_size: 0.2
+voxel_count_filter_min_cnt: 0
+background_downsampler: random
+background_random_target: 2000000
+background_downsampler_voxel_size: 0.1
+background_tile_z_to_roi: true
+symmetry_augment_axis: 1
+symmetry_augment_vehicles: true
+max_points_per_instance: 10000
+sphere_scale_factor: 1.1
+num_sphere_samples: 100000
+num_inv_sphere_samples: 100000
+num_far_points: 300000

@@ -1,0 +1,11 @@
+# Back-projects rendered depth into a world-space point cloud (reusing the
+# render node's cached rays), masked by gt_mask. Runs after the render node in
+# the outer NodeCollection; stores points in render.result.info['points'].
+# create_pointcloud gates per sensor type (bool or {SensorType: bool}).
+# eval_only: only build the cloud during evaluation (the LiDAR cloud is only
+# consumed by the ChamferDist eval metric), a no-op while training.
+_fn_: xsim.modeling.nodes.postprocess.pointcloud_node.PointCloudNode.create
+create_pointcloud:
+  camera: false
+  lidar: true
+eval_only: true

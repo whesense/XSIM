@@ -1,0 +1,10 @@
+# Eval3D strategy tuned for the deformable objects node.
+_import_: ./eval3d.yaml
+strategy_cfg:
+  config:
+    densify_end_iter: 30000
+    densify_grad_thr: 0.0006
+    densify_scale2d_stop_iter: 40000
+    density_reset_end_iter: 30000
+    density_reset_value: 0.1
+    prune_scale3d: 0.1

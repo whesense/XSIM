@@ -1,0 +1,16 @@
+# Feature aspect: raw per-gaussian features (view-independent).
+# Contributes the model base class, its init config, and the specular LR.
+model_type:
+  base:
+    _type_: xsim.modeling.gaussian.GaussianModel
+init_configs:
+  - _cls_: xsim.modeling.gaussian.GaussianModel.InitCfg
+    specular_init: randn
+    specular_fixed_dim: 13
+# Raw specular features are a second, view-independent feature vector decoded by
+# the CNN -- they train at the albedo-scale LR, unlike SH coefficients which use
+# the much smaller default in common/opt/gaussian.yaml.
+opt_cfg:
+  params:
+    features_specular:
+      lr: 2.5e-3

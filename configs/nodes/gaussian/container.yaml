@@ -1,0 +1,23 @@
+# GaussianContainer holding the static / rigid / deformable nodes.
+# Each entry composes aspects by merge:
+#   node-kind base + feature (raw | sh) + model mixins + regularization + strategy
+
+_fn_: xsim.modeling.nodes.gaussian.GaussianContainer.create
+nodes:
+  - _import_:
+      - ./static.yaml
+      - ./features/sh.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_static.yaml
+  - _import_:
+      - ./rigid.yaml
+      - ./features/sh.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_rigid.yaml
+  - _import_:
+      - ./deformable.yaml
+      - ./features/sh.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_deformable.yaml
+  - _import_:
+      - ./smpl.yaml

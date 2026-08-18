@@ -1,0 +1,19 @@
+# CNN postprocessor: decodes rendered raw per-gaussian features (3 albedo +
+# `feature_dim` specular) into RGB, modulated by a per-camera appearance
+# embedding and view direction. Runs after the render node in the outer
+# NodeCollection.
+#
+# The decoder input width must match: render features (3 + feature_dim) +
+# appearance_dim + 3 ray-dir channels. With feature_dim=13 that pairs with
+# features/raw.yaml's specular_fixed_dim: 13.
+_fn_: xsim.modeling.nodes.postprocess.cnn_postprocessor.CNNPostprocessorNode.create
+feature_dim: 13
+appearance_dim: 8
+# Optimizer for the decoder + per-camera appearance embedding. Param-group names
+# must match CNNPostprocessorNode.params() (rgb_decoder, camera_embedding).
+opt_cfg:
+  params:
+    rgb_decoder:
+      lr: 0.001
+    camera_embedding:
+      lr: 0.001

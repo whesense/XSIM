@@ -1,0 +1,5 @@
+# split_dataset configuration.
+# Builds a SplitConfig instance: split_dataset(sim_ds, cfg.split)
+_data_: xsim.data.reconstruction.sampling.split_dataset.SplitConfig
+test_ratio: 0.0
+test_lidar_ids: [2, 3, 4, 5]

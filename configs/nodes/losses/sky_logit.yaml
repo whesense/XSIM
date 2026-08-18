@@ -1,0 +1,8 @@
+# Loss node: BCE between the rendered sky map and the segmentation sky mask.
+# Only meaningful when the gaussian nodes compose mixins/sky_logit.yaml -- the
+# render node then splats the sky_logit channel into info['sky_map'] and this
+# loss is the sole gradient source for the parameter.
+_fn_: xsim.modeling.nodes.SceneNode.create
+losses:
+  - - _cls_: xsim.modeling.losses.SkyLogitLoss
+    - 0.05

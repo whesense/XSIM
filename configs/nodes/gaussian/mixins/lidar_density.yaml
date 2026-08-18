@@ -1,0 +1,9 @@
+# Config mixin: LidarDensity. Appends the model mixin (via list concatenation)
+# and contributes its optimizer param. Import after the node base.
+model_type:
+  mixins:
+    - _type_: xsim.modeling.gaussian.LidarDensity
+opt_cfg:
+  params:
+    lidar_density:
+      lr: 0.05

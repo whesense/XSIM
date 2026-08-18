@@ -1,0 +1,11 @@
+# Feature aspect: spherical-harmonics colors (view-dependent).
+# Contributes the model base class, init config and SH-degree scheduler.
+model_type:
+  base:
+    _type_: xsim.modeling.gaussian.SphericalHarmonicsGaussianModel
+init_configs:
+  - _cls_: xsim.modeling.gaussian.SphericalHarmonicsGaussianModel.InitCfg
+    max_sh_degree: 3
+model_params:
+  sh_scheduler:
+    init_sh_degree: 0

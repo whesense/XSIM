@@ -1,0 +1,3 @@
+losses:
+  - - _cls_: xsim.modeling.losses.SharpShapeRegLoss
+    - 0.1

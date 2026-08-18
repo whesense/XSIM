@@ -1,0 +1,7 @@
+# Strategy aspect: MCMC densification (node-agnostic; uses MCMCConfig defaults).
+strategy_type:
+  _type_: xsim.modeling.gaussian.MCMCStrategy
+strategy_cfg:
+  scene_extent: scene_radius
+  verbose: true
+  config: {}

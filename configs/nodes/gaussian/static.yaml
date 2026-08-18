@@ -1,0 +1,9 @@
+# Static background gaussian node (node-kind aspect only).
+# Compose with a feature (features/*.yaml) and a strategy (strategy/*.yaml)
+# to obtain a fully specified node. model_type.base is supplied by the feature.
+_fn_: xsim.modeling.nodes.gaussian.StaticSceneNode.create
+return_velocity: true
+model_type:
+  _fn_: xsim.modeling.gaussian.compose
+opt_cfg:
+  _import_: ../common/opt/gaussian.yaml

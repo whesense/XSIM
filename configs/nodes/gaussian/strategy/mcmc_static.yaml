@@ -1,0 +1,9 @@
+# MCMC strategy tuned for the static background node.
+#
+# The background carries the bulk of the scene, so it gets the whole particle
+# budget.
+
+_import_: ./mcmc.yaml
+strategy_cfg:
+  config:
+    max_num_particles: 5000000

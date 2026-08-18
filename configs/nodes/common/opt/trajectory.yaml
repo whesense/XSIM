@@ -1,0 +1,10 @@
+# TrajectoryNode optimizer (param names match TrajectoryNode.init_optimization).
+params:
+  pose_quat:
+    _fn_: xsim.modeling.nodes.sched_cfg
+    lr_init: 1.0e-5
+    lr_final: 5.0e-6
+  pose_t:
+    _fn_: xsim.modeling.nodes.sched_cfg
+    lr_init: 5.0e-4
+    lr_final: 1.0e-4

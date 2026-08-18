@@ -1,0 +1,24 @@
+# GaussianContainer variant using raw per-gaussian features (default
+# GaussianModel) for every node -- for the CNN-postprocessor pipeline. Mirrors
+# container.yaml but composes features/raw.yaml instead of features/sh.yaml, and
+# uses the raw-feature SMPL recipe (smpl_raw.yaml). All nodes emit the same
+# feature width so the render + CNN decoder see a consistent channel count.
+_fn_: xsim.modeling.nodes.gaussian.GaussianContainer.create
+nodes:
+  - _import_:
+      - ./static.yaml
+      - ./features/raw.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_static.yaml
+  - _import_:
+      - ./rigid.yaml
+      - ./features/raw.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_rigid.yaml
+  - _import_:
+      - ./deformable.yaml
+      - ./features/raw.yaml
+      - ./regularization/sharp_shape.yaml
+      - ./strategy/eval3d_deformable.yaml
+  - _import_:
+      - ./smpl_raw.yaml

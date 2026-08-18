@@ -1,0 +1,17 @@
+# Deformable node optimizer: the gaussian schedule plus the deform-network
+# params (embeddings, network)
+_import_: ./gaussian.yaml
+params:
+  positions:
+    _fn_: xsim.modeling.nodes.sched_cfg
+    lr_init: 3.2e-4
+    lr_final: 3.2e-6
+    scale_factor: null
+  embeddings:
+    _fn_: xsim.modeling.nodes.sched_cfg
+    lr_init: 1.0e-3
+    lr_final: 1.0e-4
+  network:
+    _fn_: xsim.modeling.nodes.sched_cfg
+    lr_init: 8.0e-3
+    lr_final: 8.0e-4

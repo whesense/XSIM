@@ -1,0 +1,15 @@
+# WaymoSceneProvider configuration.
+# All args are specified, so building this section instantiates the provider.
+_cls_: xsim.data.WaymoSceneProvider
+
+# Machine-specific paths come from the environment, so this file stays identical
+# everywhere. Set these per machine in configs/data/dataset_paths.yaml.
+root_path: "${env:WAYMO_ROOT_PATH}"
+cache_path: "${env:WAYMO_CACHE_PATH}"
+smpl_data_path: "${env:WAYMO_SMPL_DATA_PATH}"
+
+scene_idx: 788
+use_lidars: [1]
+ignore_segmentation: false
+
+box_time_correction_method: box_center_unwrap

@@ -1,0 +1,11 @@
+# TrajectoryNode: samples object poses from the keyframe matrix at the scene time.
+
+_fn_: xsim.modeling.nodes.kinematics.trajectory_node.TrajectoryNode.create
+optimize: true
+opt_cfg:
+  _import_: ../common/opt/trajectory.yaml
+losses:
+  - - _cls_: xsim.modeling.losses.PoseAdjustmentPenalty
+      q_weight: 1.0
+      t_weight: 1.0
+    - 0.01

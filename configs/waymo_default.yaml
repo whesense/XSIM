@@ -1,0 +1,29 @@
+# Default Waymo setup: CNN-postprocessed camera rendering and lidar depth
+# supervision.
+provider:
+  _import_: ./data/waymo/provider.yaml
+
+dataset:
+  _import_: ./data/waymo/dataset.yaml
+  batch:
+    max_lidars_per_batch: 1
+
+
+split:
+  _import_: ./data/waymo/split.yaml
+
+init:
+  _import_: ./data/init.yaml
+
+nodes:
+  _fn_: xsim.modeling.nodes.NodeCollection.create
+  nodes:
+    - _import_: ./nodes/kinematics/trajectory.yaml
+    - _import_: ./nodes/gaussian/container_raw.yaml
+    - _import_: ./nodes/render/xsimgs.yaml
+    - _import_: ./nodes/postprocess/cnn.yaml
+    - _import_: ./nodes/postprocess/env_light.yaml
+    - _import_: ./nodes/postprocess/pointcloud.yaml
+    - _import_: ./nodes/losses/lidar_depth.yaml
+
+_import_: trainer.yaml

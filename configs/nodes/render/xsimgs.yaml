@@ -1,0 +1,9 @@
+# XSIMGSRenderNode: one render node for every sensor, with per-sensor-type
+# feature gating (cameras render colors, lidars render geometry only).
+
+_fn_: xsim.modeling.nodes.render.XSIMGSRenderNode.create
+render_features:
+  camera: true
+  lidar: false
+use_phm: false
+camera_depth_max_density: true

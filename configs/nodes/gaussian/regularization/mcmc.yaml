@@ -1,0 +1,12 @@
+# Regularization mixin: the density and scale penalties MCMC relies on.
+#
+# Not optional the way sharp_shape is: MCMC relocates and spawns particles based
+# on density, and without these the sampler drifts towards many transparent,
+# oversized gaussians. Compose it with any strategy/mcmc_*.yaml; the MCMC
+# compositions rely on the ScaleRegLoss below
+
+losses:
+  - - _cls_: xsim.modeling.losses.DensityRegLoss
+    - 0.005
+  - - _cls_: xsim.modeling.losses.ScaleRegLoss
+    - 0.001

@@ -1,0 +1,34 @@
+# SMPL humans gaussian node with raw per-gaussian features (for the CNN
+# postprocessor pipeline). Same recipe as smpl.yaml but the base model is the
+# view-independent GaussianModel (raw albedo + fixed specular) instead of SH,
+# so every node emits the same feature width for the CNN decoder.
+_fn_: xsim.modeling.nodes.gaussian.smpl_node.SMPLSceneNode.create
+use_voxel_deformer: true
+return_velocity: true
+model_type:
+  _fn_: xsim.modeling.gaussian.compose
+  base:
+    _type_: xsim.modeling.gaussian.GaussianModel
+  mixins:
+    - _type_: xsim.modeling.gaussian.Instanced
+init_configs:
+  - _cls_: xsim.modeling.gaussian.GaussianModel.InitCfg
+    opacity_init: 0.99
+    specular_init: randn
+    specular_fixed_dim: 13
+opt_cfg:
+  _import_: ../common/opt/smpl.yaml
+  # raw specular features train at albedo scale, not the SH default
+  params:
+    features_specular:
+      lr: 2.5e-3
+
+losses:
+  - - _cls_: xsim.modeling.losses.smpl_knn.VoxelDeformerRegLoss
+    - 1.0
+  - - _cls_: xsim.modeling.losses.smpl_knn.KNNRegLoss
+    - 0.001
+  - - _cls_: xsim.modeling.losses.SharpShapeRegLoss
+    - 0.1
+  - - _cls_: xsim.modeling.losses.MaxSquaredScaleRegLoss
+    - 0.05

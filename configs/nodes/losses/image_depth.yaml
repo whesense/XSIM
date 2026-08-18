@@ -1,0 +1,6 @@
+# Loss node: base color losses + camera-view depth (L1DepthLoss compares rendered
+# camera depth to the lidar-projected depth map, sensor_types=CAMERA).
+_import_: ./base.yaml
+losses:
+  - - _cls_: xsim.modeling.losses.L1DepthLoss
+    - 0.01

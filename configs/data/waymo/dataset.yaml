@@ -1,0 +1,12 @@
+# SceneReconstructionDataset options.
+# Consumed as a dict: SceneReconstructionDataset(scene, config=cfg.dataset)
+# (the dataset converts this dict into SceneReconstructionDatasetConfig via dacite),
+# so every key here must name a SceneReconstructionDatasetConfig field.
+dynamic_filter:
+  min_total_dist: 0.5
+load:
+  device: cuda
+  num_workers: 16
+  preload_images: true
+batch:
+  max_lidars_per_batch: 0

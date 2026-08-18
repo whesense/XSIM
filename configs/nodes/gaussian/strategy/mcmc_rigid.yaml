@@ -1,0 +1,6 @@
+# MCMC strategy tuned for the rigid objects node: a particle budget between
+# the background's and the deformable objects'.
+_import_: ./mcmc.yaml
+strategy_cfg:
+  config:
+    max_num_particles: 2000000

@@ -1,0 +1,22 @@
+# Feature aspect: raw per-gaussian features initialized the way MCMC expects --
+# raw.yaml plus its own opacity_init/scale_factor.
+#
+# MCMC starts from many small, semi-transparent particles and lets relocation
+# and spawning find the geometry, rather than growing from confident splats:
+#   opacity_init 0.5   (vs the default 0.1)
+#   scale_factor 0.2   shrinks the k-neighbour scale estimate
+
+model_type:
+  base:
+    _type_: xsim.modeling.gaussian.GaussianModel
+init_configs:
+  - _cls_: xsim.modeling.gaussian.GaussianModel.InitCfg
+    specular_init: randn
+    specular_fixed_dim: 13
+    opacity_init: 0.5
+    scale_factor: 0.2
+
+opt_cfg:
+  params:
+    features_specular:
+      lr: 2.5e-3

@@ -1,0 +1,7 @@
+# Loss node: base color losses + lidar range-image depth (LidarDepthLoss compares
+# rendered lidar depth to sweep ray lengths, sensor_types=LIDAR). Requires a lidar
+# render in the batch (dataset.batch.max_lidars_per_batch >= 1) and render_lidars.
+_import_: ./base.yaml
+losses:
+  - - _cls_: xsim.modeling.losses.LidarDepthLoss
+    - 0.1

@@ -1,0 +1,33 @@
+# SMPL humans gaussian node. Unlike static/rigid/deformable, this isn't
+# composed from separate feature/mixin/strategy aspects -- it's a single
+# fixed recipe (no densification strategy; SH degree and opacity init differ
+# from the shared defaults), so it's kept self-contained.
+_fn_: xsim.modeling.nodes.gaussian.smpl_node.SMPLSceneNode.create
+use_voxel_deformer: true
+return_velocity: true
+model_type:
+  _fn_: xsim.modeling.gaussian.compose
+  base:
+    _type_: xsim.modeling.gaussian.SphericalHarmonicsGaussianModel
+  mixins:
+    - _type_: xsim.modeling.gaussian.Instanced
+init_configs:
+  - _cls_: xsim.modeling.gaussian.GaussianModel.InitCfg
+    opacity_init: 0.99
+  - _cls_: xsim.modeling.gaussian.SphericalHarmonicsGaussianModel.InitCfg
+    max_sh_degree: 1
+model_params:
+  sh_scheduler:
+    init_sh_degree: 0
+opt_cfg:
+  _import_: ../common/opt/smpl.yaml
+
+losses:
+  - - _cls_: xsim.modeling.losses.smpl_knn.VoxelDeformerRegLoss
+    - 1.0
+  - - _cls_: xsim.modeling.losses.smpl_knn.KNNRegLoss
+    - 0.001
+  - - _cls_: xsim.modeling.losses.SharpShapeRegLoss
+    - 0.1
+  - - _cls_: xsim.modeling.losses.MaxSquaredScaleRegLoss
+    - 0.05
