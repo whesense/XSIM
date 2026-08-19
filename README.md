@@ -28,7 +28,7 @@ To run training you need a GPU with 24GB or more VRAM, to run inference — 12GB
 Clone with submodules:
 
 ```bash
-git clone --recursive https://github.com/whesense/xsim-robotics-share
+git clone --recursive https://github.com/whesense/xsim
 ```
 
 If you already cloned without `--recursive`, pull them in after the fact:

@@ -1,0 +1,6 @@
+[submodule "third_party/pytoast"]
+	path = third_party/pytoast
+	url = https://github.com/npatakin/pytoast
+[submodule "third_party/xsimgs"]
+	path = third_party/xsimgs
+	url = https://github.com/whesense/xsimgs.git
